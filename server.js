@@ -401,7 +401,7 @@ app.get("/api/v1/sensor_data/:apikey/:array", (req, res, next) => {
         let datos = JSON.parse(row.info)
         console.log(datos)
         if(datos.api_key == req.params.apikey) {
-            var array = new Array();
+            //var array = new Array();
             (JSON.parse(req.params.array)).forEach(element => {
                 //console.log(element)
                 let query2 = 'SELECT info FROM Sensor_data,Sensor WHERE Sensor.sensor_id = ?'
@@ -410,7 +410,7 @@ app.get("/api/v1/sensor_data/:apikey/:array", (req, res, next) => {
                     if(err) {
                         //res.json({message:"error2"})
                     }else{
-                        res.json(JSON.parse(row.info).json_data)
+                        res.json(JSON.parse(row.info))
                         //console.log(JSON.parse(row.info)+"\n")
                         //array.push(JSON.parse(row.info).json_data)
                         //console.log(array)
