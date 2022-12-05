@@ -1,7 +1,7 @@
 var sqlite3 = require('sqlite3').verbose()
 var md5 = require('md5')
 
-const DBSOURCE = "db.sqlite"
+const DBSOURCE = "db4.sqlite"
 
 let db = new sqlite3.Database(DBSOURCE, (err) => {
     if (err) {
@@ -38,7 +38,9 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             sensor_api_key TEXT,
             FOREIGN KEY(location_id) REFERENCES Location(ID)
             )`);
-        //db.run("CREATE TABLE IF NOT EXISTS Sensor_data (sensor_id INTEGER, info TEXT)");
+        db.run(`CREATE TABLE IF NOT EXISTS Sensor_data (
+            info TEXT
+            )`);
     }
 });
 
